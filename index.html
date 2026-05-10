@@ -1,47 +1,83 @@
 <!DOCTYPE html>
-<html>
+<html lang="th">
 <head>
-<meta charset="UTF-8">
-<title>Social</title>
-
-<link rel="stylesheet" href="style.css">
-
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>หน้าเข้าสู่ระบบ</title>
+<style>
+  /* สไตล์ให้ดูสวยงาม */
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+  }
+  .login-container {
+    width: 300px;
+    margin: 100px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  }
+  input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+    font-size: 16px;
+  }
+  button {
+    width: 100%;
+    padding: 10px;
+    margin-top: 15px;
+    font-size: 16px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  button:hover {
+    background-color: #45a049;
+  }
+</style>
 </head>
 <body>
 
-<!-- From Uiverse.io by Na3ar-17 --> 
-<div class="container">
-  <label class="label">
-    <input type="checkbox" class="input" />
-    <span class="circle"
-      ><svg
-        class="icon"
-        aria-hidden="true"
-        xmlns="http://www.w3.org/2000/svg"
-        fill="none"
-        viewBox="0 0 24 24"
-      >
-        <path
-          stroke="currentColor"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          stroke-width="1.5"
-          d="M12 19V5m0 14-4-4m4 4 4-4"
-        ></path>
-      </svg>
-      <div class="square"></div>
-    </span>
-    <p class="title">Download</p>
-    <p class="title">Open</p>
-  </label>
+<div class="login-container" id="loginDiv">
+  <h2>กรุณากรอกรหัสผ่าน</h2>
+  <input type="password" id="passwordInput" placeholder="รหัสผ่าน" />
+  <button onclick="checkPassword()">เข้าสู่ระบบ</button>
+</div>
+
+<div id="mainContent" style="display:none;">
+  <h2>ยินดีต้อนรับ</h2>
+  <button onclick="ดูดหัว()">ดูดหัว</button>
+  <br/><br/>
+  <label for="dpiRange">ปรับ DPI:</label>
+  <input type="range" id="dpiRange" min="0" max="1000" value="500" oninput="updateDPIValue(this.value)">
+  <span id="dpiValue">500</span>
 </div>
 
 <script>
-  document.querySelector(".input").addEventListener("change", function() {
-    if (this.checked) {
-      setTimeout(() => {
-        window.location.href = "https://www.mediafire.com/file/1psrwwdtqgskfd0/%25F0%259D%2591%25AD%25F0%259D%2591%25A8%25F0%259D%2591%25B2%25F0%259D%2591%25AC_%25F0%259D%2591%25B3%25F0%259D%2591%25A8%25F0%259D%2591%25AE_%25F0%259D%2591%25B4%25F0%259D%2591%25B6%25F0%259D%2591%25AB%25F0%259D%2591%25B0%25F0%259D%2591%25AD%25F0%259D%2592%2580_%25F0%259D%2591%25B5%25F0%259D%2591%25B0%25F0%259D%2591%25B5%25F0%259D%2591%25B1%25F0%259D%2591%25A8_%25F0%259F%25A5%25B6.apk/file"; // เปลี่ยนลิงก์ตรงนี้
-      }, 4000); // หน่วง 4 วิ (ให้ animation เล่นก่อน)
-    }
-  });
+function checkPassword() {
+  const input = document.getElementById('passwordInput').value;
+  if (input === '119') {
+    document.getElementById('loginDiv').style.display = 'none';
+    document.getElementById('mainContent').style.display = 'block';
+  } else {
+    alert('รหัสผิด กรุณาลองใหม่');
+  }
+}
+
+function ดูดหัว() {
+  alert('ฟังก์ชันดูดหัวทำงานแล้ว!');
+  // ใส่โค้ดสำหรับฟังก์ชันนี้ที่นี่
+}
+
+function updateDPIValue(val) {
+  document.getElementById('dpiValue').innerText = val;
+  // ใส่โค้ดสำหรับปรับ DPI ตามค่าที่เลือก
+}
 </script>
+
+</body>
+</html>
